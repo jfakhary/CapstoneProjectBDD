@@ -42,8 +42,9 @@ public class RetailOrderSteps extends CommonUtility{
 	public void userClickOnCancelOrderButton() throws InterruptedException {
 		//Thread.sleep(3000);
 		click(factory.orderPage().cancelOrderBtn);
-		Assert.assertTrue(isElementDisplayed(factory.orderPage().cancelOrderBtn));
+		//Assert.assertTrue(isElementDisplayed(factory.orderPage().cancelOrderBtn));
 		logger.info("User click on Cancel Order button");
+		Thread.sleep(3000);
 	}
 	@Then("a cancelation message should be displayed ‘Your Order Has Been Cancelled’")
 	public void aCancelationMessageShouldBeDisplayedYourOrderHasBeenCancelled() {

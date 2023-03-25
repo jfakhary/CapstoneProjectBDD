@@ -29,7 +29,7 @@ public class RetailOrderPage extends BaseSetup{
 	@FindBy(xpath = "//option[@value='wrong']")
 	public WebElement cancelationReason;
 	
-	@FindBy(xpath = "//button[@class='order__cancel-submit']")
+	@FindBy(xpath = "//button[@id='orderSubmitBtn']")
 	public WebElement cancelOrderBtn;
 	
 	@FindBy(xpath = "//p[text()='Your Order Has Been Cancelled']")

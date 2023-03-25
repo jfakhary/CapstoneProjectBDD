@@ -134,11 +134,13 @@ public class RetailAccountSteps extends CommonUtility {
 		sendText(factory.accountPage().streetAddressField,addYourAddressOption.get(0).get("streetAddress"));
 		Thread.sleep(2000);
 		sendText(factory.accountPage().aptInputField,"789");
+		clearTextUsingSendKeys(factory.accountPage().cityField);
 		sendText(factory.accountPage().cityField,addYourAddressOption.get(0).get("city"));
 		Thread.sleep(2000);
 		selectByValue(factory.accountPage().stateDropDown,addYourAddressOption.get(0).get("state").trim());
 		//sendText(factory.accountPage().stateDropDown,addYourAddressOption.get(0).get("stateField"));
 		Thread.sleep(2000);
+		clearTextUsingSendKeys(factory.accountPage().zipCodeField);
 		sendText(factory.accountPage().zipCodeField,addYourAddressOption.get(0).get("zipCode"));
 		logger.info("user fill new address form with below information");
 		Thread.sleep(2000);
@@ -179,55 +181,58 @@ public class RetailAccountSteps extends CommonUtility {
 		Thread.sleep(2000);
 		sendText(factory.accountPage().securityCode,editCardInformation.get(0).get("securityCode"));
 		logger.info("user edit information with below data");
+		Thread.sleep(2000);
 	}
 	@When("user click on Update Your Card button")
-	public void userClickOnUpdateYourCardButton() {
+	public void userClickOnUpdateYourCardButton() throws InterruptedException {
 		click(factory.accountPage().updateYourCardButton);
 		logger.info("user click on Update Your Card button");
+		Thread.sleep(2000);
 	}
 	@Then("a message should be displayed ‘Payment Method updated Successfully’")
-	public void aMessageShouldBeDisplayedPaymentMethodUpdatedSuccessfully() {
+	public void aMessageShouldBeDisplayedPaymentMethodUpdatedSuccessfully() throws InterruptedException {
 		waitTillPresence(factory.accountPage().paymentMethodUpdatedSuccessfullyMassage);
 		Assert.assertTrue(isElementDisplayed(factory.accountPage().paymentMethodUpdatedSuccessfullyMassage));
 		logger.info("a message should be displayed ‘Payment Method updated Successfully’");
+		Thread.sleep(3000);
 	}
 	@When("User click on edit address option")
 	public void userClickOnEditAddressOption() {
 		click(factory.accountPage().editBtn);
 		logger.info("User click on edit address option");
 	}
-	@When("user fill new address")
-	public void userFillNewAddress() throws InterruptedException {
-		Thread.sleep(3000);
-		//click(factory.accountPage().fullNameField);
-		clearTextUsingSendKeys(factory.accountPage().fullNameField);
-		sendText(factory.accountPage().fullNameField,"fullName");
-		Thread.sleep(3000);
-		//click(factory.accountPage().phoneNumberField);
-		clearTextUsingSendKeys(factory.accountPage().phoneNumberField);
-		sendText(factory.accountPage().phoneNumberField,"phoneNumber");
-		Thread.sleep(3000);
-		//click(factory.accountPage().streetAddressField);
-		clearTextUsingSendKeys(factory.accountPage().streetAddressField);
-		sendText(factory.accountPage().streetAddressField,"streetAddress");
-		//click(factory.accountPage().cityField);
-		clearTextUsingSendKeys(factory.accountPage().cityField);
-		sendText(factory.accountPage().cityField,"city");
-		//click(factory.accountPage().zipCodeField);
-		clearTextUsingSendKeys(factory.accountPage().zipCodeField);
-		sendText(factory.accountPage().zipCodeField,"zipCode");
-		logger.info("User fill new address");
-	}
+//	@When("user fill new address")
+//	public void userFillNewAddress() throws InterruptedException {
+//		Thread.sleep(3000);
+//		//click(factory.accountPage().fullNameField);
+//		clearTextUsingSendKeys(factory.accountPage().fullNameField);
+//		sendText(factory.accountPage().fullNameField,"fullName");
+//		Thread.sleep(3000);
+//		//click(factory.accountPage().phoneNumberField);
+//		clearTextUsingSendKeys(factory.accountPage().phoneNumberField);
+//		sendText(factory.accountPage().phoneNumberField,"phoneNumber");
+//		Thread.sleep(3000);
+//		//click(factory.accountPage().streetAddressField);
+//		clearTextUsingSendKeys(factory.accountPage().streetAddressField);
+//		sendText(factory.accountPage().streetAddressField,"streetAddress");
+//		//click(factory.accountPage().cityField);
+//		clearTextUsingSendKeys(factory.accountPage().cityField);
+//		sendText(factory.accountPage().cityField,"city");
+//		//click(factory.accountPage().zipCodeField);
+//		clearTextUsingSendKeys(factory.accountPage().zipCodeField);
+//		sendText(factory.accountPage().zipCodeField,"zipCode");
+//		logger.info("User fill new address");
+//	}
 	@When("User click update Your Address button")
 	public void userClickUpdateYourAddressButton() {
 		click(factory.accountPage().updateYourAddressButton);
 		logger.info("User click update Your Address button");
 	}
-	@Then("a message should be displayed ‘Address Updated Successfully")
+	@Then("a message should be displayed ‘Address Updated Successfully’")
 	public void aMessageShouldBeDisplayedAddressUpdatedSuccessfully() {
 		waitTillPresence(factory.accountPage().addressUpdatedSuccessfullyMassage);
 		Assert.assertTrue(isElementDisplayed(factory.accountPage().addressUpdatedSuccessfullyMassage));
-		logger.info("a message should be displayed ‘Address Updated Successfully");
+		logger.info("a message should be displayed ‘Address Updated Successfully’");
 	}
 	@When("User click on remove option of Address section")
 	public void userClickOnRemoveOptionOfAddressSection() {
